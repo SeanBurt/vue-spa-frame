@@ -1,0 +1,165 @@
+/* scroll beautify start */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #f8f8f8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #808080;
+  background-clip: padding-box;
+  min-height: 28px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #bbb;
+}
+/* scroll beautify end */
+
+body {
+  background-color: $bg-color;
+  font-size: 14px;
+  color: #fff;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.content {
+  height: calc(100vh - 64px);
+  margin-top: 4px;
+  flex-direction: column !important;
+  overflow: hidden;
+}
+
+.nav-right,
+.nav-left {
+  position: absolute !important;
+  top: 0;
+}
+
+.nav-right {
+  right: 0;
+}
+
+.nav-left {
+  left: 180px;
+}
+
+.header {
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.aside {
+  background-color: #30323a;
+}
+
+.logo {
+  width: 160px;
+  margin-top: 12px;
+  margin-left: -12px;
+  float: left;
+}
+
+.logo > img {
+  width: 100%;
+}
+
+.footer {
+  line-height: 60px;
+  font-size: 12px;
+  color: #bec3ce;
+  text-align: center;
+}
+
+/* code beautify start */
+pre {
+  padding: 5px;
+  margin: 5px;
+}
+.string {
+  color: green;
+}
+.number {
+  color: darkorange;
+}
+.boolean {
+  color: blue;
+}
+.null {
+  color: magenta;
+}
+.key {
+  color: red;
+}
+/* code beautify end */
+
+code,
+kbd,
+samp {
+  font-family: "Menlo, Monaco, 'Courier New', monospace";
+}
+
+.model-param {
+  background-color: #25282f;
+  border-color: #25282f;
+  max-width: 80%;
+  min-width: 420px;
+  width: auto;
+  .el-message-box__title {
+    color: #fff;
+  }
+}
+
+.model-auto {
+  margin: 0 auto;
+  width: 70%;
+}
+.model-bagging {
+  margin: 0 auto;
+  width: 64%;
+}
+.model-bagging .el-select, .model-auto .el-select {
+  width: 100%;
+}
+.model-config {
+  margin: 0 auto;
+  width: 74%;
+}
+.model-config .el-select {
+  width: 86%;
+}
+
+.data-display > .el-table__body-wrapper td {
+  vertical-align: top;
+}
+
+.dialog-empty {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 16px;
+}
+
+.ml-config {
+  margin-bottom: 20px;
+}
+.ml-head {
+  margin: 10px 0;
+  border-left: 4px solid #136ACC;
+  text-indent: 6px;
+}
+.mp-select {
+  display: inline-block;
+  width: 300px !important;
+  text-align: left;
+}
