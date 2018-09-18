@@ -7,13 +7,13 @@ import NProgress from 'nprogress'
 // progress bar style
 import 'nprogress/nprogress.css'
 
-// 懒加载
-const Demo = () => import('@/view/HelloWorld')
-const NotFound = () => import('@/view/NotFound')
-const Welcome = () => import('@/view/Welcome')
-const Auth = () => import('@/view/Auth')
-const Login = () => import('@/view/Login')
-const Index = () => import('@/view/Index')
+// lazy-loaded
+const Demo = () => import(/* webpackChunkName: "Demo" */ '@/view/HelloWorld')
+const NotFound = () => import(/* webpackChunkName: "NotFound" */ '@/view/NotFound')
+const Login = () => import(/* webpackChunkName: "Login" */ '@/view/Login')
+const Welcome = () => import(/* webpackChunkName: "Welcome" */ '@/view/Welcome')
+const Auth = () => import(/* webpackChunkName: "Auth" */ '@/view/Auth')
+const Index = () => import(/* webpackChunkName: "Index" */ '@/view/Index')
 
 Vue.use(Router)
 
