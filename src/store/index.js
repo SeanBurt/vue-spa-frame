@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 
-import { storage } from '../utils'
+import { storage } from '../util'
 import mutations from './mutations'
 import actions from './action'
 import getters from './getters'

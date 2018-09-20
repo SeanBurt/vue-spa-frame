@@ -1,4 +1,4 @@
-import { storage } from '../utils'
+import { storage } from '../util'
 import {
   TEST_MUTATION,
   SET_PROJECT_MUTATION,

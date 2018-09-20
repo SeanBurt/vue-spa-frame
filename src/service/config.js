@@ -1,4 +1,4 @@
-import { PROPHET } from '../utils/env'
+import { PROPHET } from '../util/env'
 
 export const BASE = {
   ServerURI: PROPHET

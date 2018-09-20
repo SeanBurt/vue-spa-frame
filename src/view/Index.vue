@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { common } from '../utils'
+import { common } from '../util'
 import IHeader from '../component/IHeader'
 import IFooter from '../component/IFooter'
 import ILeftAside from '../component/ILeftAside'

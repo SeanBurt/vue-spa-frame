@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { auth } from '../utils'
+import { auth } from '../util'
 import { Input, Button } from 'element-ui'
 export default {
   name: 'Login',

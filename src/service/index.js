@@ -1,4 +1,4 @@
-import { ajax } from '../utils'
+import { ajax } from '../util'
 import { SG } from './config'
 
 /**

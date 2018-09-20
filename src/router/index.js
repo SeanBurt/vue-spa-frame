@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
-import { auth, constant } from '../utils'
+import { auth, constant } from '../util'
 // progress bar
 import NProgress from 'nprogress'
 // progress bar style

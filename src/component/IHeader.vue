@@ -31,7 +31,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { GetProject } from '../service'
-import { storage, auth, constant } from '../utils'
+import { storage, auth, constant } from '../util'
 import { Header, Menu, MenuItem, Submenu } from 'element-ui'
 export default {
   name: 'IHeader',

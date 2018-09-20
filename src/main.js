@@ -10,7 +10,7 @@ import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import 'normalize.css'
 import 'animate.css'
 import '@/style/index.scss'
-import './utils/log'
+import './util/log'
 import { Message, Loading, MessageBox } from 'element-ui'
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
 
