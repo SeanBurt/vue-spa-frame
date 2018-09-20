@@ -22,8 +22,8 @@ const routes = [
   {
     path: '/User',
     component: UserLayout,
+    redirect: '/User/Login',
     children: [
-      { path: '/User', redirect: '/User/Login' },
       {
         path: '/User/Login',
         component: Login,
@@ -37,8 +37,8 @@ const routes = [
   {
     path: '/',
     component: BasicLayout,
+    redirect: '/Dashboard/Index',
     children: [
-      { path: '/', redirect: '/Dashboard/Index' },
       {
         path: '/Dashboard/Index',
         component: Index,

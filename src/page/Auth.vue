@@ -3,7 +3,7 @@
     <div class="box">
       <p>您还未有平台项目权限</p>
       <p>请发送邮件申请项目权限</p>
-      <a href="mailto:g-prophet@360.cn">g-prophet@360.cn</a>
+      <a href="mailto:mzc_2015@163.com">mzc_2015@163.com</a>
     </div>
   </div>
 </template>
