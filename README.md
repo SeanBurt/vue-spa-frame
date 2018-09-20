@@ -55,13 +55,13 @@
 
 ## 使用
 
-### clone project
+### Clone project
 ```bash
 $ git clone https://github.com/SeanBurt/vue-spa-frame.git --depth=1
 $ cd vue-spa-frame
 ```
 
-### install packages
+### Install packages
 ```
 npm install
 ```
@@ -81,12 +81,12 @@ npm run build
 npm run lint
 ```
 
-### analyze compile and pack
+### Analyze compile and pack
 ```
 npm run analyze
 ```
 
-## project structure
+## 项目结构
 ```
 
 ├── dist                                        // 上线项目文件，放在服务器即可正常访问（运行 npm run build 时自动生成）
