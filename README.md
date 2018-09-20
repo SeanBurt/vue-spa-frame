@@ -156,5 +156,5 @@ npm run analyze
 
 - 在你的公司或个人项目中使用 Vue SPA Frame。
 - 通过 [Issue](https://github.com/SeanBurt/vue-spa-frame/issues) 报告 bug 或进行咨询。
-- 提交 [Pull Request](https://github.com/SeanBurt/vue-spa-frame/pulls) 改进 Pro 的代码。
+- 提交 [Pull Request](https://github.com/SeanBurt/vue-spa-frame/pulls) 改进 Vue SPA Frame 的代码。
 
