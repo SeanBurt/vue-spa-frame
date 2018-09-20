@@ -21,7 +21,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .notfound {
     max-width: 740px;
     margin: 150px auto 0;

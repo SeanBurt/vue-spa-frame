@@ -8,22 +8,46 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
 // lazy-loaded
-const Demo = () => import(/* webpackChunkName: "Demo" */ '@/view/HelloWorld')
-const NotFound = () => import(/* webpackChunkName: "NotFound" */ '@/view/NotFound')
-const Login = () => import(/* webpackChunkName: "Login" */ '@/view/Login')
-const Welcome = () => import(/* webpackChunkName: "Welcome" */ '@/view/Welcome')
-const Auth = () => import(/* webpackChunkName: "Auth" */ '@/view/Auth')
-const Index = () => import(/* webpackChunkName: "Index" */ '@/view/Index')
+const NotFound = () => import(/* webpackChunkName: "NotFound" */ '@/page/NotFound')
+const UserLayout = () => import(/* webpackChunkName: "UserLayout" */ '@/layout/UserLayout')
+const Login = () => import(/* webpackChunkName: "Login" */ '@/page/user/Login')
+const Auth = () => import(/* webpackChunkName: "Auth" */ '@/page/Auth')
+const BasicLayout = () => import(/* webpackChunkName: "BasicLayout" */ '@/layout/BasicLayout')
+const Index = () => import(/* webpackChunkName: "Index" */ '@/page/dashboard/Index')
 
 Vue.use(Router)
 
 const routes = [
-  { path: '/demo', name: 'Demo', component: Demo, meta: { requireAuth: false } },
   { path: '*', component: NotFound, meta: { requireAuth: false } },
-  { path: '/Login', name: 'Login', component: Login, meta: { requireAuth: false } },
-  { path: '/Welcome', name: 'Welcome', component: Welcome, meta: { requireAuth: false } },
+  {
+    path: '/User',
+    component: UserLayout,
+    children: [
+      { path: '/User', redirect: '/User/Login' },
+      {
+        path: '/User/Login',
+        component: Login,
+        meta: {
+          requireAuth: false
+        }
+      }
+    ]
+  },
   { path: '/Auth', name: 'Auth', component: Auth, meta: { requireAuth: true } },
-  { path: '/', name: 'Index', component: Index, meta: { requireAuth: true } }
+  {
+    path: '/',
+    component: BasicLayout,
+    children: [
+      { path: '/', redirect: '/Dashboard/Index' },
+      {
+        path: '/Dashboard/Index',
+        component: Index,
+        meta: {
+          requireAuth: true
+        }
+      }
+    ]
+  }
 ]
 
 const scrollBehavior = (to, from, savedPosition) => {
@@ -66,7 +90,7 @@ router.beforeEach((to, from, next) => {
       next()
     }
     if (!isLogin) {
-      next('/Login')
+      next('/User')
       // if current page is login will not trigger afterEach hook, so manually handle it
       NProgress.done()
     }

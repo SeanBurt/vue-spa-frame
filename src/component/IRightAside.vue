@@ -4,10 +4,7 @@
         class="iright-aside"
         @open="handleOpen"
         @close="handleClose"
-        @select="selectMainMenu"
-        background-color="#30323A"
-        text-color="#fff"
-        active-text-color="#fff" >
+        @select="selectMainMenu">
         <el-menu-item index="1">
         <span slot="title">场景信息</span>
         </el-menu-item>
@@ -54,10 +51,7 @@ export default {
 }
 </script>
 
-<style scoped>
-.el-menu-item:focus, .el-menu-item:hover {
-    box-shadow: -3px 0px #4488FF inset;
-}
+<style>
 .iright-aside {
   margin-top: 4px;
 }

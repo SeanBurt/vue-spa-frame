@@ -126,7 +126,8 @@ npm run analyze
 │   │   ├── log.js                              // 日志记录
 │   │   └── constant.js                         // 常量
 │   │   ├── index.js                            // 工具库
-│   ├── view                                    // 页面
+│   ├── layout                                  // 布局
+│   ├── page                                    // 页面
 │   ├── App.vue                                 // 单页页面入口文件
 │   ├── main.js                                 // 单页程序入口文件，加载各种公共组件
 ├── static                                      // 静态文件

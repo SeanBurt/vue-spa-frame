@@ -1,15 +1,13 @@
 <template>
   <el-header class="header">
     <a href="javascript:;" @click="goHomePage" class="logo"><img src="../img/logo.png" alt="logo"></a>
-    <el-menu :default-active="activeIndex" class="nav-menu nav-left" mode="horizontal" @select="handleSelect" background-color="#303641" text-color="#fff"
-      active-text-color="#fff" >
+    <el-menu :default-active="activeIndex" class="nav-menu nav-left" mode="horizontal" @select="handleSelect">
       <el-submenu index="1">
         <template slot="title">{{getCurrentProject.name}}</template>
         <el-menu-item v-for="(item, index) in projects" :key="item.id" :index="`1-${index}`" v-text="item.name"></el-menu-item>
       </el-submenu>
     </el-menu>
-    <el-menu :default-active="activeIndex" class="nav-menu nav-right" mode="horizontal" @select="handleSelectRight" background-color="#303641" text-color="#fff"
-      active-text-color="#fff" >
+    <el-menu :default-active="activeIndex" class="nav-menu nav-right" mode="horizontal" @select="handleSelectRight">
       <el-submenu index="1">
         <template slot="title">{{userName}}</template>
         <el-menu-item index="1-1">注销登录</el-menu-item>
@@ -46,8 +44,7 @@ export default {
     return {
       activeIndex: '1',
       projects: [],
-      userName: null,
-      changeProjectUri: ['Index', 'ExperimentList', 'DataList', 'AnalysisList', 'FeatureEngineModules', 'ModelTrainModules', 'ServiceList']
+      userName: null
     }
   },
   computed: {
@@ -135,5 +132,29 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.header {
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.logo {
+  width: 160px;
+  margin-top: 12px;
+  margin-left: -12px;
+  float: left;
+}
+.logo > img {
+  width: 100%;
+}
+.nav-right,
+.nav-left {
+  position: absolute !important;
+  top: 0;
+}
+.nav-right {
+  right: 0;
+}
+.nav-left {
+  left: 180px;
+}
 </style>

@@ -1,5 +1,3 @@
-import storage from './storage'
-
 function getHashUrlQuery (name) {
   let reg = new RegExp('(^|&)' + name + '=([^&#]*)(&|#|$)', 'i')
   let url = window.location.href
@@ -194,16 +192,6 @@ function syntaxHighlight (json) {
   })
 }
 
-function clearExpirementParams () {
-  storage.removeLocalStore('DATA_PROCESS_PARAMS')
-  storage.removeLocalStore('FEATURE_ENGINE_PARAMS')
-  storage.removeLocalStore('MODEL_TRAIN_PARAMS')
-  storage.removeLocalStore('MODEL_PREDICT_PARAMS')
-  storage.removeLocalStore('BAGGING_PARAMS')
-  storage.removeLocalStore('IMAGE_DATA_PROCESS_PARAMS')
-  storage.removeLocalStore('IMAGE_MODEL_TRAIN_PARAMS')
-}
-
 function replaceAll (val, str, replaceStr) {
   let regx = new RegExp(`${str}`, 'g')
   return val.replace(regx, replaceStr)
@@ -256,6 +244,5 @@ export default {
   copyToClipboard: copyToClipboard,
   syntaxHighlight: syntaxHighlight,
   replaceAll: replaceAll,
-  clearExpirementParams: clearExpirementParams,
   WoodenBarrel: WoodenBarrel
 }

@@ -5,9 +5,6 @@
         class="el-menu-vertical-i"
         @open="handleOpen"
         @close="handleClose"
-        background-color="#272A33"
-        text-color="#fff"
-        active-text-color="#fff"
         :collapse="isCollapse"
         :default-active="currentMenuIndex"
         :router="true" >
@@ -86,25 +83,15 @@ export default {
 }
 </script>
 
-<style scoped>
-.aside-expand {
-  height: 30px;
-  line-height: 30px;
-  background-color: #303133;
-  color: #fff;
-  cursor: pointer;
-  text-align: center;
-}
+<style>
 .ileft-aside {
   height: calc(100vh - 64px);
   margin-top: 4px;
-  background-color: #30323A;
 }
-.el-menu-vertical-i:not(.el-menu--collapse) {
-  width: 160px;
-  text-align: left;
-}
-.el-menu-item:hover {
-    box-shadow: 3px 0px #4488FF inset;
+.aside-expand {
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  text-align: center;
 }
 </style>
