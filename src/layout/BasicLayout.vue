@@ -1,12 +1,10 @@
 <template>
-  <el-container direction="vertical">
-    <IHeader></IHeader>
-    <el-container>
-      <ILeftAside></ILeftAside>
-      <el-container class="content">
-        <router-view/>
-        <IFooter></IFooter>
-      </el-container>
+  <el-container>
+    <ILeftAside></ILeftAside>
+    <el-container direction="vertical" class="basic-layout-container">
+      <IHeader></IHeader>
+      <router-view/>
+      <IFooter></IFooter>
     </el-container>
   </el-container>
 </template>
@@ -38,4 +36,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.basic-layout-container {
+  background: #f0f2f5;
+}
 </style>

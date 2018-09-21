@@ -1,33 +1,22 @@
-/* scroll beautify start */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-::-webkit-scrollbar-track-piece {
-  background-color: #f8f8f8;
-  border-radius: 4px;
+body {
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  color: #000000a6;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  background-color: #fff;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #808080;
-  background-clip: padding-box;
-  min-height: 28px;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #bbb;
-}
-/* scroll beautify end */
-
-.content {
-  height: calc(100vh - 64px);
-  margin-top: 4px;
-  flex-direction: column !important;
-  overflow: hidden;
-}
-
-.main {
-  overflow: hidden;
+a {
+  color: #1890FF;
+  background-color: transparent;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
 }

@@ -15,12 +15,6 @@ function uuapLogin () {
 }
 
 function logout () {
-  storage.eraseCookie('user_mail')
-  storage.eraseCookie('user_id')
-  storage.eraseCookie('user_name')
-  storage.eraseCookie('display_name')
-  storage.eraseCookie('auth')
-  storage.removeLocalStore('PROJECT')
 }
 
 export default {

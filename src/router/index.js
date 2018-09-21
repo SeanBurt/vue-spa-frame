@@ -41,7 +41,7 @@ const routes = [
         path: '/Dashboard/Index',
         component: Index,
         meta: {
-          requireAuth: true
+          requireAuth: false
         }
       }
     ]
@@ -66,7 +66,7 @@ const scrollBehavior = (to, from, savedPosition) => {
 
 // NProgress Configuration
 NProgress.configure({
-  showSpinner: false,
+  showSpinner: true,
   easing: 'ease',
   speed: 1000
 })

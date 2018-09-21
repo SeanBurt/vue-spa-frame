@@ -1,41 +1,23 @@
 <template>
   <section class="ileft-aside">
-    <div class="aside-expand" @click="expand"><i :class="collapseClass"></i></div>
     <el-menu
-        class="el-menu-vertical-i"
-        @open="handleOpen"
-        @close="handleClose"
-        :collapse="isCollapse"
-        :default-active="currentMenuIndex"
-        :router="true" >
-        <el-menu-item class="el-menu-item" index="1" route="/ExperimentList" >
-          <i class="el-icon-setting"></i>
-          <span slot="title">实验管理</span>
-        </el-menu-item>
-        <el-menu-item class="el-menu-item" index="2" route="/DataList" >
-          <i class="el-icon-tickets"></i>
-          <span slot="title">数据管理</span>
-        </el-menu-item>
-        <el-menu-item class="el-menu-item" index="3" route="/AnalysisList" >
-          <i class="el-icon-news"></i>
-          <span slot="title">特征分析</span>
-        </el-menu-item>
-        <el-menu-item class="el-menu-item" index="4" route="/FeatureEngineModules" >
-          <i class="el-icon-date"></i>
-          <span slot="title">特征工程</span>
-        </el-menu-item>
-        <el-menu-item class="el-menu-item" index="5" route="/ModelTrainModules" >
-          <i class="el-icon-share"></i>
-          <span slot="title">模型训练</span>
-        </el-menu-item>
-        <el-menu-item class="el-menu-item" index="6" route="/ModelPredictModules" >
-          <i class="el-icon-edit-outline"></i>
-          <span slot="title">模型预测</span>
-        </el-menu-item>
-        <el-menu-item class="el-menu-item" index="7" route="/ServiceList" >
-          <i class="el-icon-upload"></i>
-          <span slot="title">服务部署</span>
-        </el-menu-item>
+      class="ileft-aside-menu"
+      @open="handleOpen"
+      @close="handleClose"
+      :collapse="isCollapse"
+      :default-active="currentMenuIndex"
+      background-color="#001529"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+      :router="true" >
+      <el-menu-item class="el-menu-item" index="1" route="/Transfomer">
+        <i class="el-icon-setting"></i>
+        <span slot="title">Data Transfomer</span>
+      </el-menu-item>
+      <el-menu-item class="el-menu-item" index="1" route="/Train">
+        <i class="el-icon-share"></i>
+        <span slot="title">Model Train</span>
+      </el-menu-item>
     </el-menu>
   </section>
 </template>
@@ -70,14 +52,6 @@ export default {
     handleOpen (key, keyPath) {
     },
     handleClose (key, keyPath) {
-    },
-    expand () {
-      this.isCollapse = !this.isCollapse
-      if (this.isCollapse) {
-        this.collapseClass = 'el-icon-rank'
-      } else {
-        this.collapseClass = 'el-icon-menu'
-      }
     }
   }
 }
@@ -85,13 +59,10 @@ export default {
 
 <style>
 .ileft-aside {
-  height: calc(100vh - 64px);
-  margin-top: 4px;
+  height: 100vh;
+  background: #001529;
 }
-.aside-expand {
-  height: 30px;
-  line-height: 30px;
-  cursor: pointer;
-  text-align: center;
+.ileft-aside-menu {
+  border-right: none;
 }
 </style>

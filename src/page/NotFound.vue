@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="notfound">
+      <div class="not-found">
           <h1>404</h1>
           <blockquote>您访问到外太空链接~</blockquote>
           <router-link class="router-link-active" to="/">回到首页</router-link>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'NotFound',
+  name: 'not-found',
   components: {
   },
   data () {
@@ -22,23 +22,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.notfound {
+.not-found {
     max-width: 740px;
     margin: 150px auto 0;
     text-align: left;
 }
-.notfound>h1 {
+.not-found > h1 {
     color: #fff;
 }
-.notfound>blockquote {
+.not-found > blockquote {
     font-size: 18px;
     color: #999;
     border-left: 4px solid #dfe2e5;
     margin-left: 0;
     padding-left: 15px;
-}
-.notfound>a {
-    color: #3eaf7c;
-    text-decoration: none;
 }
 </style>

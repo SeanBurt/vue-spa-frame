@@ -1,5 +1,5 @@
 <template>
-  <el-main class="main">
+  <el-main>
     <h3>hello world</h3>
   </el-main>
 </template>
