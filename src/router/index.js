@@ -11,7 +11,6 @@ import 'nprogress/nprogress.css'
 const NotFound = () => import(/* webpackChunkName: "NotFound" */ '@/page/NotFound')
 const UserLayout = () => import(/* webpackChunkName: "UserLayout" */ '@/layout/UserLayout')
 const Login = () => import(/* webpackChunkName: "Login" */ '@/page/user/Login')
-const Auth = () => import(/* webpackChunkName: "Auth" */ '@/page/Auth')
 const BasicLayout = () => import(/* webpackChunkName: "BasicLayout" */ '@/layout/BasicLayout')
 const Index = () => import(/* webpackChunkName: "Index" */ '@/page/dashboard/Index')
 
@@ -33,7 +32,6 @@ const routes = [
       }
     ]
   },
-  { path: '/Auth', name: 'Auth', component: Auth, meta: { requireAuth: true } },
   {
     path: '/',
     component: BasicLayout,
