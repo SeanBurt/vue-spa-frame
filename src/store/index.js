@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 
-import { storage } from '../util'
 import mutations from './mutations'
 import actions from './action'
 import getters from './getters'
@@ -13,11 +12,7 @@ Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 
 const state = {
-  test: 'hello',
-  currentProject: JSON.parse(storage.getLocalStore('PROJECT')) || {
-    name: '',
-    id: ''
-  },
+  isCollapse: false,
   errorLogs: [],
   currentMenuIndex: '0'
 }

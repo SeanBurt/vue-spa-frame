@@ -1,6 +1,5 @@
 export default {
-  getTest: state => state.test,
-  getCurrentProject: state => state.currentProject,
+  getIsCollapse: state => state.isCollapse,
   errorLogs: state => state.errorLogs,
   currentMenuIndex: state => state.currentMenuIndex
 }
