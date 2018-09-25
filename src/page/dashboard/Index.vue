@@ -1,6 +1,6 @@
 <template>
   <el-main>
-    <h3>hello world</h3>
+    <h3>你好, 世界</h3>
   </el-main>
 </template>
 

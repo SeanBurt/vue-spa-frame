@@ -1,46 +1,38 @@
 <template>
   <el-header class="header">
-    <i @click="collapse" class="header-trigger"><svg v-show="!isCollapse" viewBox="64 64 896 896" class="" data-icon="menu-fold" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"></path></svg>
-    <svg v-show="isCollapse" viewBox="64 64 896 896" class="" data-icon="menu-unfold" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519a8.84 8.84 0 0 0 0-13.9L142.4 381.9c-5.8-4.6-14.4-.5-14.4 6.9v246.3a8.9 8.9 0 0 0 14.4 7z"></path></svg></i>
-    <el-menu :default-active="activeIndex" class="nav-menu nav-right" mode="horizontal" @select="handleSelectRight">
+    <i @click="collapse" class="header-trigger" :style="isCollapse ? 'transform: rotate(180deg);' : 'transform: rotate(0deg);'">
+      <svg viewBox="64 64 896 896" class="" data-icon="menu-fold" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"></path></svg>
+    </i>
+    <el-menu :default-active="activeIndex" class="nav-menu header-setting" mode="horizontal" @select="handleSelectRight">
       <el-submenu index="1">
-        <template slot="title">{{userName}}</template>
+        <template slot="title">
+          <span class="avatar-image"><img src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" alt="avatar"></span>
+          <span>{{userName}}</span>
+        </template>
         <el-menu-item index="1-1">注销登录</el-menu-item>
       </el-submenu>
-      <el-submenu index="2">
-        <template slot="title">{{currentProjectName}}</template>
-        <el-menu-item v-for="(item, index) in projects" :key="item.id" :index="`2-${index}`" v-text="item.name"></el-menu-item>
-      </el-submenu>
     </el-menu>
+    <el-button @click="switchLanguage" class="btn-lang" plain size="mini">{{language}}</el-button>
   </el-header>
 </template>
 
 <script>
-import { Header, Menu, MenuItem, Submenu } from 'element-ui'
+import { Header, Menu, MenuItem, Submenu, Button } from 'element-ui'
 export default {
   name: 'IHeader',
   components: {
     'el-header': Header,
     'el-menu': Menu,
     'el-menu-item': MenuItem,
-    'el-submenu': Submenu
+    'el-submenu': Submenu,
+    'el-button': Button
   },
   props: {},
   data () {
     return {
       activeIndex: '1',
-      projects: [{
-        id: '1',
-        name: 'Transformers'
-      }, {
-        id: '2',
-        name: 'Shrek'
-      }, {
-        id: '3',
-        name: 'Astro Boy'
-      }],
-      userName: 'Lie',
-      currentProjectName: 'Transformers'
+      userName: '未来',
+      language: 'English'
     }
   },
   computed: {
@@ -73,6 +65,10 @@ export default {
     // shrink menu
     collapse () {
       this.$store.dispatch('COLLAPSE_MUTATION')
+    },
+    // switch language
+    switchLanguage () {
+      this.language = this.language === 'English' ? '中　文' : 'English'
     }
   }
 }
@@ -89,10 +85,29 @@ export default {
   height: 60px;
   font-size: 20px;
   cursor: pointer;
+  transition: all 0.3s;
 }
-.nav-right{
+.header-setting{
   position: absolute;
   top: 0;
-  right: 0;
+  right: 80px;
+}
+.avatar-image {
+  display: inline-block;
+  margin-right: 6px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 50%;
+}
+.avatar-image > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.btn-lang {
+  position: absolute;
+  top: 16px;
+  right: 20px;
 }
 </style>

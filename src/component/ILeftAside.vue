@@ -1,5 +1,5 @@
 <template>
-  <section class="ileft-aside" :style="isCollapse ? 'width:64px;' : 'width:180px;'">
+  <section class="ileft-aside" :style="isCollapse ? 'width:64px;' : 'width:200px;'">
     <div class="ileft-aside-logo" id="logo"><a href="/"><img src="data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
     AAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACAASURB
     VHic7d3Pcxz1nf/x58dhT7bZyxpUCvbFwmZdAb61xqQKbwU7hVOY2LJnXebiP0G+wY34ewjRzb6Z
@@ -245,14 +245,30 @@
       text-color="#fff"
       active-text-color="#ffd04b"
       :router="true">
-      <el-menu-item class="el-menu-item" index="1" route="/Transfomer">
-        <i class="el-icon-setting"></i>
-        <span slot="title">Data Transfomer</span>
-      </el-menu-item>
-      <el-menu-item class="el-menu-item" index="2" route="/Train">
-        <i class="el-icon-share"></i>
-        <span slot="title">Model Train</span>
-      </el-menu-item>
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-setting"></i>
+          <span slot="title">面板</span>
+        </template>
+        <el-menu-item index="1-1" route="/">分析页</el-menu-item>
+        <el-menu-item index="1-2">监控页</el-menu-item>
+        <el-menu-item index="1-3">工作台</el-menu-item>
+      </el-submenu>
+       <el-submenu index="2">
+        <template slot="title">
+          <i class="el-icon-share"></i>
+          <span slot="title">列表页</span>
+        </template>
+        <el-menu-item index="2-1">查询列表</el-menu-item>
+        <el-menu-item index="2-2">标准列表</el-menu-item>
+        <el-menu-item index="2-3">卡片列表</el-menu-item>
+        <el-submenu index="2-4">
+          <span slot="title">搜索列表</span>
+          <el-menu-item index="2-4-1">搜索列表（文章）</el-menu-item>
+          <el-menu-item index="2-4-2">搜索列表（项目）</el-menu-item>
+          <el-menu-item index="2-4-3">搜索列表（应用）</el-menu-item>
+        </el-submenu>
+      </el-submenu>
     </el-menu>
   </section>
 </template>
@@ -318,7 +334,7 @@ export default {
   display: inline-block;
   vertical-align: middle;
   font-size: 20px;
-  margin: 0 0 0 6px;
+  margin: 0 0 0 12px;
   font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: 600;
 }
