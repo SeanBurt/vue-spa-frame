@@ -1,6 +1,6 @@
 <template>
   <section class="ileft-aside" :style="isCollapse ? 'width:64px;' : 'width:200px;'">
-    <div class="ileft-aside-logo" id="logo"><a href="/"><img src="data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+    <div :style="isCollapse ? 'transform: rotate(360deg);' : 'transform: rotate(0deg);'" class="ileft-aside-logo" id="logo"><a href="/"><img src="data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
     AAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACAASURB
     VHic7d3Pcxz1nf/x58dhT7bZyxpUCvbFwmZdAb61xqQKbwU7hVOY2LJnXebiP0G+wY34ewjRzb6Z
     P4ELrm9JGlxhF9jCqSCob4yrICSqL7vmsJBVRGQgwdZx+XwPPWONRqNfPTPqT3c/H1UqmNZo+u13
@@ -248,25 +248,24 @@
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-setting"></i>
-          <span slot="title">面板</span>
+          <span slot="title" v-text="$t('message.dashboard')"></span>
         </template>
-        <el-menu-item index="1-1" route="/">分析页</el-menu-item>
-        <el-menu-item index="1-2">监控页</el-menu-item>
-        <el-menu-item index="1-3">工作台</el-menu-item>
+        <el-menu-item index="1-1" route="/" v-text="$t('message.analysis')"></el-menu-item>
+        <el-menu-item index="1-2" v-text="$t('message.monitor')"></el-menu-item>
+        <el-menu-item index="1-3" v-text="$t('message.workplace')"></el-menu-item>
       </el-submenu>
        <el-submenu index="2">
         <template slot="title">
           <i class="el-icon-share"></i>
-          <span slot="title">列表页</span>
+          <span slot="title" v-text="$t('message.list')"></span>
         </template>
-        <el-menu-item index="2-1">查询列表</el-menu-item>
-        <el-menu-item index="2-2">标准列表</el-menu-item>
-        <el-menu-item index="2-3">卡片列表</el-menu-item>
-        <el-submenu index="2-4">
-          <span slot="title">搜索列表</span>
-          <el-menu-item index="2-4-1">搜索列表（文章）</el-menu-item>
-          <el-menu-item index="2-4-2">搜索列表（项目）</el-menu-item>
-          <el-menu-item index="2-4-3">搜索列表（应用）</el-menu-item>
+        <el-menu-item index="2-1" v-text="$t('message.basic')"></el-menu-item>
+        <el-menu-item index="2-2" v-text="$t('message.card')"></el-menu-item>
+        <el-submenu index="2-3">
+          <span slot="title" v-text="$t('message.search')"></span>
+          <el-menu-item index="2-4-1" v-text="$t('message.article')"></el-menu-item>
+          <el-menu-item index="2-4-2" v-text="$t('message.project')"></el-menu-item>
+          <el-menu-item index="2-4-3" v-text="$t('message.application')"></el-menu-item>
         </el-submenu>
       </el-submenu>
     </el-menu>

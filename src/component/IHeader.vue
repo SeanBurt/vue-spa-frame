@@ -31,13 +31,15 @@ export default {
   data () {
     return {
       activeIndex: '1',
-      userName: '未来',
       language: '中　文'
     }
   },
   computed: {
     isCollapse () {
       return this.$store.getters.getIsCollapse
+    },
+    userName () {
+      return this.$t('message.future')
     }
   },
   created () {},
