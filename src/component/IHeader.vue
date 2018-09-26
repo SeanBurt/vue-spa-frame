@@ -9,7 +9,7 @@
           <span class="avatar-image"><img src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" alt="avatar"></span>
           <span>{{userName}}</span>
         </template>
-        <el-menu-item index="1-1">注销登录</el-menu-item>
+        <el-menu-item index="1-1" v-text="$t('message.logout')"></el-menu-item>
       </el-submenu>
     </el-menu>
     <el-button @click="switchLanguage" class="btn-lang" plain size="mini">{{language}}</el-button>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { Header, Menu, MenuItem, Submenu, Button } from 'element-ui'
+import { Header, Menu, MenuItem, Submenu, Button, MessageBox } from 'element-ui'
 export default {
   name: 'IHeader',
   components: {
@@ -32,7 +32,7 @@ export default {
     return {
       activeIndex: '1',
       userName: '未来',
-      language: 'English'
+      language: '中　文'
     }
   },
   computed: {
@@ -46,17 +46,9 @@ export default {
   methods: {
     handleSelectRight (key, keyPath) {
       if (key === '1-1') {
-        this.$confirm('您确认要注销登录吗?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
+        MessageBox.confirm(this.$t('message.promptLogout'), this.$t('message.prompt')).then(() => {
           this.$router.push({ path: '/User' })
         }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消'
-          })
         })
       } else {
         this.$router.go(0)
@@ -68,11 +60,11 @@ export default {
     },
     // switch language
     switchLanguage () {
-      if (this.language === 'English') {
-        this.language = '中　文'
+      if (this.language === '中　文') {
+        this.language = 'English'
         this.$i18n.locale = 'en'
       } else {
-        this.language = 'English'
+        this.language = '中　文'
         this.$i18n.locale = 'cn'
       }
     }

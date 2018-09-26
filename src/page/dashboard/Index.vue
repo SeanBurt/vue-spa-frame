@@ -1,6 +1,5 @@
 <template>
   <el-main>
-    <h3>你好, 世界</h3>
   </el-main>
 </template>
 
@@ -13,6 +12,7 @@ export default {
   },
   data () {
     return {
+      color: '#409EFF'
     }
   },
   methods: {
