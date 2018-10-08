@@ -86,7 +86,6 @@ export default {
   padding: 18px 0 22px;
   height: 60px;
   font-size: 20px;
-  cursor: pointer;
 }
 .avatar-image {
   float: right;
@@ -101,12 +100,15 @@ export default {
   height: 100%;
   display: block;
 }
-.header-setting{
+.header-setting {
   float: right;
   padding: 20px 6px 6px 6px;
 }
 .header-language {
   float: right;
   padding: 20px 0 6px 10px;
+}
+.header-setting:hover, .header-trigger:hover, .header-language:hover {
+  cursor: pointer;
 }
 </style>
