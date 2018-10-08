@@ -9,8 +9,11 @@ import 'animate.css'
 import '@/style/index.scss'
 import './util/log'
 import i18n from './lang'
+import { MessageBox } from 'element-ui'
 
 Vue.config.productionTip = false
+
+Vue.prototype.$confirm = MessageBox.confirm
 
 new Vue({
   router,

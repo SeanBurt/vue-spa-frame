@@ -1,6 +1,6 @@
 <template>
   <section class="ileft-aside" :style="isCollapse ? 'width:64px;' : 'width:200px;'">
-    <div :style="isCollapse ? 'transform: rotate(360deg);' : 'transform: rotate(0deg);'" class="ileft-aside-logo" id="logo"><a href="/"><img src="data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+    <div class="ileft-aside-logo" id="logo"><a href="/"><img :style="isCollapse ? 'transform: rotate(360deg);' : 'transform: rotate(0deg);'" src="data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
     AAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACAASURB
     VHic7d3Pcxz1nf/x58dhT7bZyxpUCvbFwmZdAb61xqQKbwU7hVOY2LJnXebiP0G+wY34ewjRzb6Z
     P4ELrm9JGlxhF9jCqSCob4yrICSqL7vmsJBVRGQgwdZx+XwPPWONRqNfPTPqT3c/H1UqmNZo+u13
@@ -321,12 +321,12 @@ export default {
   padding-left: 16px;
   background: #002140;
   overflow: hidden;
-  transition: all 0.3s;
 }
 .ileft-aside-logo img {
   display: inline-block;
   vertical-align: middle;
   height: 30px;
+  transition: all 0.6s;
 }
 .ileft-aside-logo h1 {
   color: white;

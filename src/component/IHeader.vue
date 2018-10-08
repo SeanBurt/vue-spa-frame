@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { Header, Menu, MenuItem, Submenu, Button, MessageBox } from 'element-ui'
+import { Header, Menu, MenuItem, Submenu, Button } from 'element-ui'
 export default {
   name: 'IHeader',
   components: {
@@ -48,12 +48,10 @@ export default {
   methods: {
     handleSelectRight (key, keyPath) {
       if (key === '1-1') {
-        MessageBox.confirm(this.$t('message.promptLogout'), this.$t('message.prompt')).then(() => {
+        this.$confirm(this.$t('message.promptLogout'), this.$t('message.prompt')).then(() => {
           this.$router.push({ path: '/User' })
         }).catch(() => {
         })
-      } else {
-        this.$router.go(0)
       }
     },
     // shrink menu
@@ -85,7 +83,6 @@ export default {
   height: 60px;
   font-size: 20px;
   cursor: pointer;
-  transition: all 0.3s;
 }
 .header-setting{
   position: absolute;
