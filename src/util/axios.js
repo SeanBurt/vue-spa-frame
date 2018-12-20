@@ -1,138 +1,104 @@
-import auth from './auth'
-const axios = require('axios')
+/**
+ * axios封装
+ * 请求拦截、响应拦截、错误统一处理
+ */
+import axios from 'axios'
+import router from '../router'
+import store from '../store'
+import { Message } from 'element-ui'
 
-function formatData (data) {
-  if (!data) return null
-  let arr = []
-  for (let name in data) {
-    arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]))
-  }
-  return arr.join('&')
-}
-
-function formatDataJson (data) {
-  if (!data) return null
-  return JSON.stringify(data)
-}
-
-function initOptions (method, url, data, success, failure) {
-  let opts = {
-    method: method,
-    url: url,
-    data: data,
-    success: success,
-    failure: failure
-  }
-  return opts
+/**
+ * 提示函数
+ * 禁止点击蒙层、显示一秒后关闭
+ */
+const tip = msg => {
+  Message({
+    message: msg,
+    duration: 1000
+  })
 }
 
 /**
- * 封装axios
- * @param {String} method    请求的类型，默认post
- * @param {String} url    请求地址（在config.js里配置）
- * @param {Object} data    请求参数
- * @param {Object} headers    自定义请求headers
- * @param {Int} timeout    超时时间
- * @param {Function} success    请求成功后，这里会有一个参数,服务器返回数据 data
- * @param {Function} failure    请求失败处理函数
- * @param {Boolean} withCredentials    跨域请求时是否传递cookie(默认true：传递)
- * @param {Boolean} noIdentity    是否验证身份（默认false:验证身份）
- * @param {Boolean} rsaData    是否加密参数（默认false:不加密）
- * @param return
+ * 跳转登录页
+ * 携带当前页面路由，以期在登录页面完成登录后返回当前页面
  */
-async function apiAxios (opt = {}) {
-  let opts = opt
-  let url = opts.url
-  if (!url) {
-    console.error('request url must not empty!')
-    return
-  }
-  let data = opts.data || {}
-  let method = opts.method || 'POST'
-  method = method.toUpperCase()
-
-  let rsaData = !!opts.rsaData
-  // 进行参数加密处理
-  if (rsaData) {
-  }
-
-  let noIdentity = !!opts.noIdentity
-  // 进行身份处理
-  if (!noIdentity) {
-  }
-
-  return axios({
-    method: method,
-    url: url,
-    data: method === 'POST' || method === 'PUT' || method === 'DELETE' ? data : null,
-    params: method === 'GET' ? data : null,
-    transformRequest: [
-      function (data) {
-        if (
-          opts.headers &&
-          opts.headers['Content-Type'] === 'application/json'
-        ) {
-          return formatDataJson(data)
-        } else return formatData(data)
-      }
-    ],
-    paramsSerializer: function (params) {
-      return formatData(params)
-    },
-    headers: opts.headers || {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Prophet-Token': auth.identity
-    },
-    timeout: opts.time || 120 * 1000,
-    responseType: opts.dataType || 'json',
-    withCredentials: opts.withCredentials !== false,
-    cache: false
+const toLogin = () => {
+  router.replace({
+    path: '/login',
+    query: {
+      redirect: router.currentRoute.fullPath
+    }
   })
-    .then(function (res) {
-      let ret = res.data
-      if (res.status >= 200 && res.status < 300) {
-        if (opts.success) {
-          if (ret.context.status === 0) {
-            opts.success(ret.data)
-          } else {
-            opts.failure(ret.context.message)
-          }
-        }
-      } else if (opts.failure) {
-        opts.failure(ret)
-      }
-    })
-    .catch(function (err) {
-      if (!err) return
-      try {
-        if (opts.failure) {
-          opts.failure(err.message)
-        }
-      } catch (e) {
-        console.error(e)
-      }
-    })
 }
 
-// 返回在vue模板中的调用接口
-export default {
-  get: function (url, data, success, failure) {
-    let opts = initOptions('GET', url, data, success, failure)
-    return apiAxios(opts)
-  },
-  post: function (url, data, success, failure) {
-    let opts = initOptions('POST', url, data, success, failure)
-    return apiAxios(opts)
-  },
-  put: function (url, data, success, failure) {
-    let opts = initOptions('PUT', url, data, success, failure)
-    return apiAxios(opts)
-  },
-  delete: function (url, data, success, failure) {
-    let opts = initOptions('DELETE', url, data, success, failure)
-    return apiAxios(opts)
-  },
-  ajax: function (opt) {
-    return apiAxios(opt)
+/**
+ * 请求失败后的错误统一处理
+ * @param {Number} status 请求失败的状态码
+ */
+const errorHandle = (status, other) => {
+  // 状态码判断
+  switch (status) {
+    // 401: 未登录状态，跳转登录页
+    case 401:
+      toLogin()
+      break
+    // 403 token过期
+    // 清除token并跳转登录页
+    case 403:
+      tip('登录过期，请重新登录')
+      localStorage.removeItem('token')
+      store.commit('loginSuccess', null)
+      setTimeout(() => {
+        toLogin()
+      }, 1000)
+      break
+    // 404请求不存在
+    case 404:
+      tip('请求的资源不存在')
+      break
+    default:
+      console.log(other)
   }
 }
+
+// 创建axios实例
+let instance = axios.create({ timeout: 1000 * 12 })
+// 设置post请求头
+instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+/**
+ * 请求拦截器
+ * 每次请求前，如果存在token则在请求头中携带token
+ */
+instance.interceptors.request.use(
+  config => {
+    // 登录流程控制中，根据本地是否存在token判断用户的登录情况
+    // 但是即使token存在，也有可能token是过期的，所以在每次的请求头中携带token
+    // 后台根据携带的token判断用户的登录情况，并返回给我们对应的状态码
+    // 而后我们可以在响应拦截器中，根据状态码进行一些统一的操作。
+    const token = store.state.token
+    token && (config.headers.Authorization = token)
+    return config
+  },
+  error => Promise.error(error))
+
+// 响应拦截器
+instance.interceptors.response.use(
+  // 请求成功
+  res => res.status === 200 ? Promise.resolve(res) : Promise.reject(res),
+  // 请求失败
+  error => {
+    const { response } = error
+    if (response) {
+      // 请求已发出，但是不在2xx的范围
+      errorHandle(response.status, response.data.message)
+      return Promise.reject(response)
+    } else {
+      // 处理断网的情况
+      // eg:请求超时或断网时，更新state的network状态
+      // network状态在app.vue中控制着一个全局的断网提示组件的显示隐藏
+      // 关于断网组件中的刷新重新获取数据，会在断网组件中说明
+      store.commit('changeNetwork', false)
+    }
+  })
+
+export default instance
