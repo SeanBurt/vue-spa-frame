@@ -1,13 +1,13 @@
 <template>
   <el-main>
-    <h1>Analysis</h1>
+    <h1>Workbench</h1>
   </el-main>
 </template>
 
 <script>
 import { Main } from 'element-ui'
 export default {
-  name: 'Index',
+  name: 'Workbench',
   components: {
     'el-main': Main
   },

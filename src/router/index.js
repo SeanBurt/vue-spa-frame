@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '../store'
-import { auth, constant } from '../util'
+import store from '@/store'
+import { auth, constant } from '@/util'
 // progress bar
 import NProgress from 'nprogress'
 // progress bar style
@@ -13,6 +13,7 @@ const UserLayout = () => import(/* webpackChunkName: "UserLayout" */ '@/layout/U
 const Login = () => import(/* webpackChunkName: "Login" */ '@/page/user/Login')
 const BasicLayout = () => import(/* webpackChunkName: "BasicLayout" */ '@/layout/BasicLayout')
 const Index = () => import(/* webpackChunkName: "Index" */ '@/page/dashboard/Index')
+const Workbench = () => import(/* webpackChunkName: "Workbench" */ '@/page/dashboard/Workbench')
 
 Vue.use(Router)
 
@@ -40,6 +41,13 @@ const routes = [
       {
         path: '/Dashboard/Index',
         component: Index,
+        meta: {
+          requireAuth: false
+        }
+      },
+      {
+        path: '/Dashboard/Workbench',
+        component: Workbench,
         meta: {
           requireAuth: false
         }

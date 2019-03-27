@@ -252,7 +252,7 @@
         </template>
         <el-menu-item index="1-1" route="/" v-text="$t('message.analysis')"></el-menu-item>
         <el-menu-item index="1-2" v-text="$t('message.monitor')"></el-menu-item>
-        <el-menu-item index="1-3" v-text="$t('message.workplace')"></el-menu-item>
+        <el-menu-item index="1-3" route="/Dashboard/Workbench" v-text="$t('message.workplace')"></el-menu-item>
       </el-submenu>
        <el-submenu index="2">
         <template slot="title">
